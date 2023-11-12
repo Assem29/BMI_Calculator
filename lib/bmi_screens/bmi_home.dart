@@ -10,6 +10,9 @@ class BMIScreen extends StatefulWidget {
 
 Color mainColor = Color(0xff101323);
 Color secColor = Color(0xff202020);
+var _changeNum = 0;
+var _addWeight =0;
+var _addAge=0;
 
 class _BMIScreenState extends State<BMIScreen> {
   @override
@@ -113,7 +116,7 @@ class _BMIScreenState extends State<BMIScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '180',
+                              '$_changeNum',
                               style: TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold,
@@ -121,15 +124,19 @@ class _BMIScreenState extends State<BMIScreen> {
                             ),
                             Text(
                               'cm',
-                              style: TextStyle(fontSize: 15, color: Colors.white),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.white),
                             ),
                           ],
                         ),
                         Slider(
-                          value: 150,
-                          onChanged: (value) {},
+                          value: _changeNum.toDouble(),
+                          onChanged: (value) {
+                            setState(() {
+                              _changeNum = value.round();
+                            });
+                          },
                           max: 300,
-                          min: 100,
                           activeColor: Colors.purple,
                         ),
                       ],
@@ -160,7 +167,7 @@ class _BMIScreenState extends State<BMIScreen> {
                           height: 10,
                         ),
                         Text(
-                          '60',
+                          '$_addWeight',
                           style: TextStyle(fontSize: 30, color: Colors.white),
                         ),
                         SizedBox(
@@ -172,22 +179,32 @@ class _BMIScreenState extends State<BMIScreen> {
                             Container(
                                 decoration: BoxDecoration(
                                     color: Colors.grey,
-                                    borderRadius: BorderRadius.circular(40)
-                                ),                            height: 50,
-                                width: 50,
-                                child: IconButton(onPressed: (){}, icon:  FaIcon(FontAwesomeIcons.plusCircle))),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.grey,
-                                  borderRadius: BorderRadius.circular(40)
-                              ),
+                                    borderRadius: BorderRadius.circular(40)),
                                 height: 50,
                                 width: 50,
-                                child: IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.minusCircle))),
-
+                                child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _addWeight++;
+                                      });
+                                    },
+                                    icon: FaIcon(FontAwesomeIcons.plusCircle))),
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(40)),
+                                height: 50,
+                                width: 50,
+                                child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _addWeight--;
+                                      });
+                                    },
+                                    icon:
+                                        FaIcon(FontAwesomeIcons.minusCircle))),
                           ],
                         ),
-
                       ],
                     ),
                   ),
@@ -209,7 +226,7 @@ class _BMIScreenState extends State<BMIScreen> {
                           height: 10,
                         ),
                         Text(
-                          '20',
+                          '$_addAge',
                           style: TextStyle(fontSize: 30, color: Colors.white),
                         ),
                         SizedBox(
@@ -221,22 +238,32 @@ class _BMIScreenState extends State<BMIScreen> {
                             Container(
                                 decoration: BoxDecoration(
                                     color: Colors.grey,
-                                    borderRadius: BorderRadius.circular(40)
-                                ),                            height: 50,
+                                    borderRadius: BorderRadius.circular(40)),
+                                height: 50,
                                 width: 50,
-                                child: IconButton(onPressed: (){}, icon:  FaIcon(FontAwesomeIcons.plusCircle))),
+                                child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _addAge++;
+                                      });
+                                    },
+                                    icon: FaIcon(FontAwesomeIcons.plusCircle))),
                             Container(
                                 decoration: BoxDecoration(
                                     color: Colors.grey,
-                                    borderRadius: BorderRadius.circular(40)
-                                ),
+                                    borderRadius: BorderRadius.circular(40)),
                                 height: 50,
                                 width: 50,
-                                child: IconButton(onPressed: (){}, icon: FaIcon(FontAwesomeIcons.minusCircle))),
-
+                                child: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _addAge--;
+                                      });
+                                    },
+                                    icon:
+                                        FaIcon(FontAwesomeIcons.minusCircle))),
                           ],
                         ),
-
                       ],
                     ),
                   ),
@@ -244,14 +271,19 @@ class _BMIScreenState extends State<BMIScreen> {
               ),
             ),
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(topLeft:Radius.circular(70),topRight:Radius.circular(70),),
-              ),
-              height: 60,
-              width: double.infinity,
-                child: MaterialButton(onPressed: (){},color: Colors.purple,child: Text('CALCULTOR'),))
-
-
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(70),
+                    topRight: Radius.circular(70),
+                  ),
+                ),
+                height: 60,
+                width: double.infinity,
+                child: MaterialButton(
+                  onPressed: () {},
+                  color: Colors.purple,
+                  child: Text('CALCULTOR'),
+                ))
           ],
         ),
       ),
