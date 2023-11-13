@@ -1,5 +1,10 @@
+import 'dart:math';
+
+import 'package:bmi_project/bmi_screens/bmi_result.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'constent.dart';
 
 class BMIScreen extends StatefulWidget {
   const BMIScreen({super.key});
@@ -8,19 +13,19 @@ class BMIScreen extends StatefulWidget {
   State<BMIScreen> createState() => _BMIScreenState();
 }
 
-Color mainColor = Color(0xff101323);
-Color secColor = Color(0xff202020);
 var _changeNum = 0;
-var _addWeight =0;
-var _addAge=0;
+var _addWeight = 0;
+var _addAge = 0;
+var height;
 
 class _BMIScreenState extends State<BMIScreen> {
+  bool isMale = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: mainColor,
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'BMI CALCULATOR',
           style: TextStyle(
             color: Colors.white,
@@ -32,61 +37,75 @@ class _BMIScreenState extends State<BMIScreen> {
         centerTitle: true,
       ),
       body: Container(
-        padding: EdgeInsetsDirectional.only(top: 30),
+        padding: const EdgeInsetsDirectional.only(top: 30),
         child: Column(
           children: [
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: secColor,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    height: 150,
-                    width: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/man.png',
-                          width: 50,
-                          height: 50,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'MALE',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isMale = true;
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: isMale ? Colors.deepPurple : secColor,
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      height: 150,
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/man.png',
+                            width: 50,
+                            height: 50,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            'MALE',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: secColor,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                    ),
-                    height: 150,
-                    width: 150,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/womens-day.png',
-                          width: 70,
-                          height: 50,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'FEMALE',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isMale=false;
+                      });
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: !isMale ? Colors.deepPurple : secColor,
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      height: 150,
+                      width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/images/womens-day.png',
+                            width: 70,
+                            height: 50,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text(
+                            'FEMALE',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -105,24 +124,25 @@ class _BMIScreenState extends State<BMIScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'HEIGHT',
                           style: TextStyle(fontSize: 23, color: Colors.white),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          textBaseline: TextBaseline.alphabetic,
                           children: [
                             Text(
                               '$_changeNum',
-                              style: TextStyle(
+                              style: const TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white),
                             ),
-                            Text(
+                            const Text(
                               'cm',
                               style:
                                   TextStyle(fontSize: 15, color: Colors.white),
@@ -152,25 +172,25 @@ class _BMIScreenState extends State<BMIScreen> {
                   Container(
                     decoration: BoxDecoration(
                       color: secColor,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     height: 150,
                     width: 150,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'WEIGHT',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
                           '$_addWeight',
-                          style: TextStyle(fontSize: 30, color: Colors.white),
+                          style: const TextStyle(fontSize: 30, color: Colors.white),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Row(
@@ -188,7 +208,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                         _addWeight++;
                                       });
                                     },
-                                    icon: FaIcon(FontAwesomeIcons.plusCircle))),
+                                    icon: const FaIcon(FontAwesomeIcons.plusCircle))),
                             Container(
                                 decoration: BoxDecoration(
                                     color: Colors.grey,
@@ -202,7 +222,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                       });
                                     },
                                     icon:
-                                        FaIcon(FontAwesomeIcons.minusCircle))),
+                                        const FaIcon(FontAwesomeIcons.minusCircle))),
                           ],
                         ),
                       ],
@@ -211,25 +231,25 @@ class _BMIScreenState extends State<BMIScreen> {
                   Container(
                     decoration: BoxDecoration(
                       color: secColor,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
                     ),
                     height: 150,
                     width: 150,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        const Text(
                           'AGE',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Text(
                           '$_addAge',
-                          style: TextStyle(fontSize: 30, color: Colors.white),
+                          style: const TextStyle(fontSize: 30, color: Colors.white),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Row(
@@ -247,7 +267,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                         _addAge++;
                                       });
                                     },
-                                    icon: FaIcon(FontAwesomeIcons.plusCircle))),
+                                    icon: const FaIcon(FontAwesomeIcons.plusCircle))),
                             Container(
                                 decoration: BoxDecoration(
                                     color: Colors.grey,
@@ -261,7 +281,7 @@ class _BMIScreenState extends State<BMIScreen> {
                                       });
                                     },
                                     icon:
-                                        FaIcon(FontAwesomeIcons.minusCircle))),
+                                        const FaIcon(FontAwesomeIcons.minusCircle))),
                           ],
                         ),
                       ],
@@ -271,7 +291,7 @@ class _BMIScreenState extends State<BMIScreen> {
               ),
             ),
             Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(70),
                     topRight: Radius.circular(70),
@@ -280,9 +300,17 @@ class _BMIScreenState extends State<BMIScreen> {
                 height: 60,
                 width: double.infinity,
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    double result=_addWeight /pow(_changeNum/100, 2).round();
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>BMIResult(
+                      age: _addAge,
+                      isMale: isMale,
+                      weight: _addWeight,
+                      result:result ,
+                    )));
+                  },
                   color: Colors.purple,
-                  child: Text('CALCULTOR'),
+                  child: const Text('CALCULTOR'),
                 ))
           ],
         ),

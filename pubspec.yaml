@@ -45,12 +45,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter_native_splash:
-  android: true
-  ios: true
-  web: false
-  color: "#ffffff"
-  image: "assets/images/79z_2203_w012_n001_42b_p12_42.jpg"
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -58,6 +53,9 @@ flutter_native_splash:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
+flutter_native_splash:
+    image: assets/images/79z_2203_w012_n001_42b_p12_42.jpg
+    color: "#2A52BE"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
