@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'bmi_screens/bmi_home.dart';
+import 'modules/home/bmi_home.dart';
 
 void main() {
   runApp(const MyApp());
