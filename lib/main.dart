@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'modules/home/bmi_home.dart';
+import 'modules/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BMIScreen(),
+      home: LoginScreen(),
     );
   }
 }

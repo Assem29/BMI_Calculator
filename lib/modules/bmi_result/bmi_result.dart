@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../shared/components/styles/constent.dart';
+import '../../shared/components/constent.dart';
 
 class BMIResult extends StatelessWidget {
   final bool isMale;
